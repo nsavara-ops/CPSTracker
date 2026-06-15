@@ -11,7 +11,9 @@
 var CPS = CPS || {};
 
 CPS.Logger = (function () {
-  const C = CPS.CONSTANTS;
+  function constants() {
+    return CPS.getConstants ? CPS.getConstants() : CPS.CONSTANTS;
+  }
 
   function now() {
     return new Date();
@@ -43,6 +45,7 @@ CPS.Logger = (function () {
   }
 
   function createRunContext(moduleName, options) {
+    const C = constants();
     options = options || {};
     const startedAt = now();
 
@@ -58,7 +61,9 @@ CPS.Logger = (function () {
   }
 
   function logRunStart(runContext) {
+    const C = constants();
     const ss = CPS.SheetAccess.getMasterSpreadsheet();
+
     return CPS.SheetAccess.appendObjects(ss, C.SHEETS.SYNC_LOG, [{
       Run_ID: runContext.Run_ID,
       Module: runContext.Module,
@@ -71,6 +76,7 @@ CPS.Logger = (function () {
   }
 
   function logRunComplete(runContext, counts, status, notes) {
+    const C = constants();
     counts = counts || {};
     const ss = CPS.SheetAccess.getMasterSpreadsheet();
 
@@ -105,6 +111,7 @@ CPS.Logger = (function () {
   }
 
   function logFinding(runContext, finding) {
+    const C = constants();
     finding = finding || {};
     const ss = CPS.SheetAccess.getMasterSpreadsheet();
 
@@ -143,6 +150,7 @@ CPS.Logger = (function () {
   }
 
   function logRuntimeProblem(runContext, problem) {
+    const C = constants();
     problem = problem || {};
     const ss = CPS.SheetAccess.getMasterSpreadsheet();
 
@@ -159,6 +167,7 @@ CPS.Logger = (function () {
   }
 
   function withRun(moduleName, options, callback) {
+    const C = constants();
     const run = createRunContext(moduleName, options);
     logRunStart(run);
 
