@@ -15,7 +15,6 @@ CPS.SheetAccess = (function () {
     return CPS.getConstants ? CPS.getConstants() : CPS.CONSTANTS;
   }
 
-
   function getMasterSpreadsheet() {
     return SpreadsheetApp.openById(constants().MASTER_SPREADSHEET_ID);
   }
