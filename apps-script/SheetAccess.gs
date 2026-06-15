@@ -10,11 +10,13 @@
 
 var CPS = CPS || {};
 
-CPS.SheetAccess = (function () {
-  const C = CPS.CONSTANTS;
+  function constants() {
+    return CPS.getConstants ? CPS.getConstants() : CPS.CONSTANTS;
+}
+
 
   function getMasterSpreadsheet() {
-    return SpreadsheetApp.openById(C.MASTER_SPREADSHEET_ID);
+    return SpreadsheetApp.openById(constants().MASTER_SPREADSHEET_ID);
   }
 
   function getSpreadsheetById(spreadsheetId) {
@@ -37,7 +39,7 @@ CPS.SheetAccess = (function () {
   }
 
   function getHeaderMap(sheet, headerRow) {
-    const row = headerRow || C.HEADER_ROWS.DEFAULT;
+    const row = headerRow || constants().HEADER_ROWS.DEFAULT;
     const lastColumn = Math.max(sheet.getLastColumn(), 1);
     const values = sheet.getRange(row, 1, 1, lastColumn).getValues()[0];
 
@@ -72,7 +74,7 @@ CPS.SheetAccess = (function () {
 
   function readObjects(sheet, options) {
     options = options || {};
-    const headerRow = options.headerRow || C.HEADER_ROWS.DEFAULT;
+    const headerRow = options.headerRow || constants().HEADER_ROWS.DEFAULT;
     const includeBlankRows = Boolean(options.includeBlankRows);
     const addRowNumber = options.addRowNumber !== false;
 
@@ -150,7 +152,7 @@ CPS.SheetAccess = (function () {
     }
 
     const sheet = getSheetOrThrow(spreadsheet, sheetName);
-    const headerRow = options.headerRow || C.HEADER_ROWS.DEFAULT;
+    const headerRow = options.headerRow || constants().HEADER_ROWS.DEFAULT;
     const headerMap = getHeaderMap(sheet, headerRow);
     const headers = Object.keys(headerMap).sort(function (a, b) {
       return headerMap[a] - headerMap[b];
@@ -175,7 +177,7 @@ CPS.SheetAccess = (function () {
   }
 
   function updateCellsByHeader(sheet, rowNumber, patchObject, headerRow) {
-    const map = getHeaderMap(sheet, headerRow || C.HEADER_ROWS.DEFAULT);
+    const map = getHeaderMap(sheet, headerRow || constants().HEADER_ROWS.DEFAULT);
     Object.keys(patchObject || {}).forEach(function (header) {
       const col = map[header];
       if (!col) {
