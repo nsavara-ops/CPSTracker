@@ -10,9 +10,10 @@
 
 var CPS = CPS || {};
 
+CPS.SheetAccess = (function () {
   function constants() {
     return CPS.getConstants ? CPS.getConstants() : CPS.CONSTANTS;
-}
+  }
 
 
   function getMasterSpreadsheet() {
