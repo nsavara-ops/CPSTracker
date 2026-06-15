@@ -12,13 +12,17 @@
 var CPS = CPS || {};
 
 CPS.RegistryService = (function () {
-  const C = CPS.CONSTANTS;
+  function constants() {
+    return CPS.getConstants ? CPS.getConstants() : CPS.CONSTANTS;
+  }
 
   function master() {
     return CPS.SheetAccess.getMasterSpreadsheet();
   }
 
   function readTable(sheetName, headerRow) {
+    const C = constants();
+
     return CPS.SheetAccess.readSheetObjects(master(), sheetName, {
       headerRow: headerRow || C.HEADER_ROWS.DEFAULT
     }).rows;
@@ -51,34 +55,48 @@ CPS.RegistryService = (function () {
   }
 
   function getEmployees(options) {
+    const C = constants();
     options = options || {};
+
     let rows = readTable(C.SHEETS.EMPLOYEES);
+
     if (options.activeOnly) {
       rows = rows.filter(activeLike);
     }
+
     return rows;
   }
 
   function getProjects(options) {
+    const C = constants();
     options = options || {};
+
     let rows = readTable(C.SHEETS.PROJECTS);
+
     if (options.activeOnly) {
       rows = rows.filter(activeLike);
     }
+
     return rows;
   }
 
   function getTasks(options) {
+    const C = constants();
     options = options || {};
+
     let rows = readTable(C.SHEETS.TASKS);
+
     if (options.activeOnly) {
       rows = rows.filter(activeLike);
     }
+
     return rows;
   }
 
   function getTrackers(options) {
+    const C = constants();
     options = options || {};
+
     let rows = readTable(C.SHEETS.TRACKERS);
 
     if (options.type) {
@@ -125,21 +143,31 @@ CPS.RegistryService = (function () {
   }
 
   function getTemplates(options) {
+    const C = constants();
     options = options || {};
+
     let rows = readTable(C.SHEETS.TEMPLATES);
+
     if (options.activeOnly) {
       rows = rows.filter(activeLike);
     }
+
     return rows;
   }
 
   function getUpdateQueue(options) {
+    const C = constants();
     options = options || {};
+
     let rows = readTable(C.SHEETS.UPDATE_QUEUE);
 
     if (options.pendingOnly) {
       rows = rows.filter(function (row) {
-        const status = String(CPS.SheetAccess.getValueByAnyHeader(row, ['Status', 'Run_Status'], '')).trim();
+        const status = String(CPS.SheetAccess.getValueByAnyHeader(row, [
+          'Status',
+          'Run_Status'
+        ], '')).trim();
+
         return status === '' || status === C.RUN_STATUS.NOT_STARTED;
       });
     }
@@ -149,23 +177,32 @@ CPS.RegistryService = (function () {
 
   function indexBy(rows, headerName) {
     const index = {};
+
     rows.forEach(function (row) {
       const key = normalizeId(row[headerName]);
+
       if (key) {
         index[key] = row;
       }
     });
+
     return index;
   }
 
   function groupBy(rows, headerName) {
     const grouped = {};
+
     rows.forEach(function (row) {
       const key = normalizeId(row[headerName]);
-      if (!key) return;
+
+      if (!key) {
+        return;
+      }
+
       grouped[key] = grouped[key] || [];
       grouped[key].push(row);
     });
+
     return grouped;
   }
 
@@ -204,32 +241,18 @@ CPS.RegistryService = (function () {
   }
 
   function smokeTestRegistryRead() {
-    return CPS.Logger.withRun('RegistryService.smokeTestRegistryRead', {
-      mode: C.MODES.DRY_RUN,
-      scope: 'Master registry read'
-    }, function (run) {
-      const snapshot = getRegistrySnapshot();
+    const snapshot = getRegistrySnapshot();
 
-      CPS.Logger.logFinding(run, {
-        Severity: C.SEVERITY.INFO,
-        Finding_Type: 'Registry Snapshot',
-        Message: JSON.stringify(snapshot.counts),
-        Notes: 'This row confirms the registry read path works.'
-      });
-
-      return {
-        counts: {
-          rowsRead:
-            snapshot.counts.employees +
-            snapshot.counts.projects +
-            snapshot.counts.tasks +
-            snapshot.counts.trackers +
-            snapshot.counts.templates +
-            snapshot.counts.updateQueue
-        },
-        notes: 'Registry snapshot read completed.'
-      };
-    });
+    return {
+      counts: snapshot.counts,
+      totalRowsRead:
+        snapshot.counts.employees +
+        snapshot.counts.projects +
+        snapshot.counts.tasks +
+        snapshot.counts.trackers +
+        snapshot.counts.templates +
+        snapshot.counts.updateQueue
+    };
   }
 
   return {
