@@ -12,7 +12,9 @@ Phase 3 Task 03 added the first read-only template audit module.
 
 Phase 3 Task 04 added the config sync dry-run module.
 
-Phase 3 Task 05 adds the dropdown publishing dry-run module.
+Phase 3 Task 05 added the dropdown publishing dry-run module.
+
+Phase 3 Task 06 adds the normalized hour sync dry-run/read path.
 
 Included:
 
@@ -23,18 +25,20 @@ Included:
 - `apps-script/TemplateAudit.gs`
 - `apps-script/ConfigSync.gs`
 - `apps-script/DropdownPublisher.gs`
+- `apps-script/HourSync.gs`
 - `apps-script/appsscript.json`
 - `docs/PHASE3_IMPLEMENTATION_TASK_01.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_02.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_03.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_04.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_05.md`
+- `docs/PHASE3_IMPLEMENTATION_TASK_06.md`
 
 ## Not included yet
 
 - Config Sync write mode
 - Dropdown Publishing write mode
-- Hour Sync
+- Normalized_Hours write mode
 - Task Compliance
 - Report Refresh
 - Project Projection Update
