@@ -16,7 +16,9 @@ Phase 3 Task 05 added the dropdown publishing dry-run module.
 
 Phase 3 Task 06 added the normalized hour sync dry-run/read path.
 
-Phase 3 Task 07 adds the task compliance dry-run module.
+Phase 3 Task 07 added the task compliance dry-run module.
+
+Phase 3 Task 08 adds the report refresh dry-run module.
 
 Included:
 
@@ -29,6 +31,7 @@ Included:
 - `apps-script/DropdownPublisher.gs`
 - `apps-script/HourSync.gs`
 - `apps-script/TaskCompliance.gs`
+- `apps-script/ReportRefresh.gs`
 - `apps-script/appsscript.json`
 - `docs/PHASE3_IMPLEMENTATION_TASK_01.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_02.md`
@@ -37,13 +40,14 @@ Included:
 - `docs/PHASE3_IMPLEMENTATION_TASK_05.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_06.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_07.md`
+- `docs/PHASE3_IMPLEMENTATION_TASK_08.md`
 
 ## Not included yet
 
 - Config Sync write mode
 - Dropdown Publishing write mode
 - Normalized_Hours write mode
-- Report Refresh
+- Report Refresh write mode
 - Project Projection Update
 - Formula Repair
 - Queue Runner
