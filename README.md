@@ -20,7 +20,9 @@ Phase 3 Task 07 added the task compliance dry-run module.
 
 Phase 3 Task 08 added the report refresh dry-run module.
 
-Phase 3 Task 09 adds the project projection update dry-run module.
+Phase 3 Task 09 added the project projection update dry-run module.
+
+Phase 3 Task 10 adds the formula repair dry-run module.
 
 Included:
 
@@ -35,6 +37,7 @@ Included:
 - `apps-script/TaskCompliance.gs`
 - `apps-script/ReportRefresh.gs`
 - `apps-script/ProjectionUpdate.gs`
+- `apps-script/FormulaRepair.gs`
 - `apps-script/appsscript.json`
 - `docs/PHASE3_IMPLEMENTATION_TASK_01.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_02.md`
@@ -45,6 +48,7 @@ Included:
 - `docs/PHASE3_IMPLEMENTATION_TASK_07.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_08.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_09.md`
+- `docs/PHASE3_IMPLEMENTATION_TASK_10.md`
 
 ## Not included yet
 
@@ -53,6 +57,6 @@ Included:
 - Normalized_Hours write mode
 - Report Refresh write mode
 - Project Projection write mode
-- Formula Repair
+- Formula Repair write mode
 - Queue Runner
 - Production tracker writes
