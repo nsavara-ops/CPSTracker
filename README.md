@@ -24,7 +24,9 @@ Phase 3 Task 09 added the project projection update dry-run module.
 
 Phase 3 Task 10 added the formula repair dry-run module.
 
-Phase 3 Task 11 adds the deployment queue runner dry-run module.
+Phase 3 Task 11 added the deployment queue runner dry-run module.
+
+Phase 3 Task 12 adds the Phase 3 QA lock and module inventory.
 
 Included:
 
@@ -53,6 +55,13 @@ Included:
 - `docs/PHASE3_IMPLEMENTATION_TASK_09.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_10.md`
 - `docs/PHASE3_IMPLEMENTATION_TASK_11.md`
+- `docs/PHASE3_IMPLEMENTATION_TASK_12.md`
+
+## Phase 3 lock status
+
+Phase 3 currently represents a dry-run/read-path implementation baseline.
+
+The dry-run modules are not production-write modules.
 
 ## Not included yet
 
