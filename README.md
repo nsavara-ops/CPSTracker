@@ -4,31 +4,24 @@ This repository stores the Apps Script source code and technical documentation f
 
 ## Current implementation scope
 
-Phase 3 Task 01 added the first scoped Apps Script skeleton utility layer.
+Phase 3 created the dry-run/read-path implementation baseline.
 
-Phase 3 Task 02 reviewed and hardened the skeleton utilities before business modules were added.
+Phase 4 has started controlled workbook-copy testing.
 
-Phase 3 Task 03 added the first read-only template audit module.
+Phase 4 Testing Task 01 aligns QueueRunner with the current `Update_Queue` schema used in the master workbook.
 
-Phase 3 Task 04 added the config sync dry-run module.
+## Current safety status
 
-Phase 3 Task 05 added the dropdown publishing dry-run module.
+The current implementation remains dry-run only.
 
-Phase 3 Task 06 added the normalized hour sync dry-run/read path.
+The only permitted writes are:
 
-Phase 3 Task 07 added the task compliance dry-run module.
+- Master sync log rows
+- Master audit log rows
+- Master review issue rows
+- Master error log rows
 
-Phase 3 Task 08 added the report refresh dry-run module.
-
-Phase 3 Task 09 added the project projection update dry-run module.
-
-Phase 3 Task 10 added the formula repair dry-run module.
-
-Phase 3 Task 11 added the deployment queue runner dry-run module.
-
-Phase 3 Task 12 adds the Phase 3 QA lock and module inventory.
-
-Included:
+## Included Apps Script modules
 
 - `apps-script/Constants.gs`
 - `apps-script/SheetAccess.gs`
@@ -44,24 +37,6 @@ Included:
 - `apps-script/FormulaRepair.gs`
 - `apps-script/QueueRunner.gs`
 - `apps-script/appsscript.json`
-- `docs/PHASE3_IMPLEMENTATION_TASK_01.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_02.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_03.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_04.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_05.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_06.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_07.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_08.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_09.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_10.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_11.md`
-- `docs/PHASE3_IMPLEMENTATION_TASK_12.md`
-
-## Phase 3 lock status
-
-Phase 3 currently represents a dry-run/read-path implementation baseline.
-
-The dry-run modules are not production-write modules.
 
 ## Not included yet
 
